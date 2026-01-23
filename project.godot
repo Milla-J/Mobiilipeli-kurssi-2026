@@ -24,6 +24,7 @@ project/assembly_name="Example"
 folder_colors={
 "res://Art/": "red",
 "res://Audio/": "yellow",
+"res://Code/": "orange",
 "res://Fonts/": "blue",
 "res://Scenes/": "purple"
 }
