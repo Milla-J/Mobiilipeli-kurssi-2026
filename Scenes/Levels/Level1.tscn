@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://dc2e2fiv0swsp"]
+
+[ext_resource type="PackedScene" uid="uid://cfonf177ag17h" path="res://Scenes/Characters/PlayerCharacter.tscn" id="1_5jgm0"]
+[ext_resource type="PackedScene" uid="uid://bsw618415ybs8" path="res://Scenes/Levels/SmallPlatform.tscn" id="2_36ke7"]
+
+[node name="Level1" type="Node2D"]
+
+[node name="PlayerCharacter" parent="." instance=ExtResource("1_5jgm0")]
+position = Vector2(214, 138)
+
+[node name="SmallPlatform" parent="." instance=ExtResource("2_36ke7")]
+position = Vector2(214, 171)
