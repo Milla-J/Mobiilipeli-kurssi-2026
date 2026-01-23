@@ -10,10 +10,17 @@ config_version=5
 
 [application]
 
-config/name="Example"
-run/main_scene="uid://chhymq4yq2t3m"
-config/features=PackedStringArray("4.5", "Mobile")
+config/name="MobilePlatformer2D"
+run/main_scene="uid://3835k6hty0w1"
+config/features=PackedStringArray("4.5", "C#", "Mobile")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=640
+window/size/viewport_height=360
+window/size/borderless=true
+window/stretch/mode="viewport"
 
 [dotnet]
 
@@ -32,3 +39,4 @@ folder_colors={
 [rendering]
 
 renderer/rendering_method="mobile"
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)
