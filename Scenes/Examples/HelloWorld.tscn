@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://cku70gtx7h4ry"]
+
+[ext_resource type="Script" uid="uid://cmae70uf4vo7o" path="res://Code/Example/HelloWorld.cs" id="1_fhvh5"]
+[ext_resource type="Script" uid="uid://bu0oywkhv5g88" path="res://Code/Example/Fibonacci.cs" id="2_v5r6d"]
+[ext_resource type="Texture2D" uid="uid://xk08asjfpufr" path="res://icon.svg" id="3_ntit3"]
+[ext_resource type="Script" uid="uid://b2q1oj2x6ck3l" path="res://Code/Example/ProtoMover.cs" id="4_qgmiv"]
+
+[node name="Hello" type="Node2D"]
+script = ExtResource("1_fhvh5")
+
+[node name="Fibonacci" type="Node" parent="."]
+script = ExtResource("2_v5r6d")
+
+[node name="ProtoMover" type="Sprite2D" parent="." node_paths=PackedStringArray("_point1", "_point2")]
+position = Vector2(76, 144)
+texture = ExtResource("3_ntit3")
+script = ExtResource("4_qgmiv")
+_direction = Vector2(100, 0)
+_speed = 100.0
+_pingPong = true
+_point1 = NodePath("../Point1")
+_point2 = NodePath("../Point2")
+
+[node name="Point1" type="Node2D" parent="."]
+position = Vector2(40, 43)
+
+[node name="Point2" type="Node2D" parent="."]
+position = Vector2(587, 304)
