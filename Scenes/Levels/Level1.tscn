@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=4 uid="uid://dc2e2fiv0swsp"]
+[gd_scene load_steps=7 format=4 uid="uid://dc2e2fiv0swsp"]
 
 [ext_resource type="PackedScene" uid="uid://cfonf177ag17h" path="res://Scenes/Characters/PlayerCharacter.tscn" id="1_5jgm0"]
 [ext_resource type="Script" uid="uid://c3tbutnhd61av" path="res://Code/Level/FollowCamera.cs" id="2_riv1q"]
 [ext_resource type="TileSet" uid="uid://ba6ile41qaui2" path="res://Level/Tiles/LevelTiles.tres" id="4_kri6y"]
 [ext_resource type="PackedScene" uid="uid://bfhhnqvphb68c" path="res://Scenes/Collectables/Coin.tscn" id="4_xvio3"]
 [ext_resource type="TileSet" uid="uid://bidd783uqwk2n" path="res://Level/Tiles/LevelTiles-NoCollision.tres" id="5_kri6y"]
+[ext_resource type="PackedScene" uid="uid://c7jkftcj5kt0a" path="res://Scenes/UI/MainUI.tscn" id="6_4d3fe"]
 
 [node name="Level1" type="Node2D"]
 
@@ -52,3 +53,5 @@ tile_set = ExtResource("4_kri6y")
 z_index = 1
 tile_map_data = PackedByteArray("AAAHABAAAAAAAAEAAAAHABEAAAAAAAEAAAAIABAAAAAAAAEAAAAIABEAAAAAAAEAAAA=")
 tile_set = ExtResource("5_kri6y")
+
+[node name="MainUI" parent="." instance=ExtResource("6_4d3fe")]
