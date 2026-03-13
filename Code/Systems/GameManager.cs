@@ -35,6 +35,21 @@ public partial class GameManager : Node
 
 	#region Game Data
 	private int _score = 0;
+	private SceneTree _sceneTree = null;
+
+	// Automatically initializing property. Loads the reference to the
+	// scene tree when it is needed for the first time.
+	public SceneTree SceneTree
+	{
+		get
+		{
+			if (_sceneTree == null)
+			{
+				_sceneTree = GetTree();
+			}
+			return _sceneTree;
+		}
+	}
 
 	public int Score
 	{
@@ -46,6 +61,12 @@ public partial class GameManager : Node
 			GD.Print($"Pisteet nyt: {Score}");
 			// TODO: Päivitä pisteet käyttöliittymälle.
 		}
+	}
+
+	public LevelController CurrentLevel
+	{
+		get;
+		private set;
 	}
 
 	#endregion
@@ -77,5 +98,42 @@ public partial class GameManager : Node
 
 		Score -= amount;
 		return true;
+	}
+
+	public void GoToScene(string path)
+	{
+		CallDeferred(MethodName.LoadScene, path);
+	}
+
+	public void RegisterLevel(LevelController currentLevel)
+	{
+		if (CurrentLevel == null && currentLevel != null)
+		{
+			CurrentLevel = currentLevel;
+		}
+	}
+
+	private void LoadScene(string path)
+	{
+		if (CurrentLevel != null)
+		{
+			// Level is already loaded, unload it.
+			CurrentLevel.Free();
+			CurrentLevel = null;
+		}
+
+		// Fetch the scene to be loaded.
+		PackedScene nextScene = GD.Load<PackedScene>(path);
+		if (nextScene != null)
+		{
+			// Scene was loaded successfully.
+			CurrentLevel = nextScene.Instantiate<LevelController>();
+			SceneTree.Root.AddChild(CurrentLevel);
+			SceneTree.CurrentScene = CurrentLevel;
+		}
+		else
+		{
+			GD.PushError($"Can't load a scene at the path {path}");
+		}
 	}
 }
