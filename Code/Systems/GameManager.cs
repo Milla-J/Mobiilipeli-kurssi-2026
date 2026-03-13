@@ -50,6 +50,11 @@ public partial class GameManager : Node
 
 	#endregion
 
+	/// <summary>
+	/// Adds the <paramref name="amount"/> to the score.
+	/// </summary>
+	/// <param name="amount">The amount to add.</param>
+	/// <returns><c>True</c>, if adding the amount was successful. <c>False</c> otherwise.</returns>
 	public bool AddScore(int amount)
 	{
 		if (amount < 0)

@@ -12,6 +12,21 @@ public partial class PlayerCharacter : CharacterBody2D
 	private float _horizontalMovement = 0;
 	private bool _isJumping = false;
 
+	public Health Health
+	{
+		get;
+		private set;
+	}
+
+	public override void _Ready()
+	{
+		Health = GetNode<Health>("Health");
+		if (Health == null)
+		{
+			GD.PushError("Can't find the Health node");
+		}
+	}
+
 	public override void _Input(InputEvent @event)
 	{
 		if (@event.IsActionPressed(InputConfig.InputJump) && IsOnFloor())
