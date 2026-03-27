@@ -15,6 +15,7 @@ public partial class PlayerCharacter : CharacterBody2D
 	private bool _isJumping = false;
 	private Timer _timer = null;
 	private AnimatedSprite2D _animatedSprite = null;
+	private bool _isRespawning = false;
 
 	public Health Health
 	{
@@ -119,12 +120,34 @@ public partial class PlayerCharacter : CharacterBody2D
 
 	private void Die()
 	{
+		_isRespawning = true;
 		GD.Print("Player character died!");
-		// TODO: Replace me with a proper implementation.
+		_animatedSprite.Play("die");
+		_animatedSprite.AnimationFinished += OnAnimationFinished;
+	}
+
+	private void OnAnimationFinished()
+	{
+		if (_animatedSprite.Animation == "die")
+		{
+			GameManager.Instance.CurrentLevel.Respawn();
+			Health.Reset();
+			_animatedSprite.Play("spawn");
+		}
+		else if (_animatedSprite.Animation == "spawn")
+		{
+			_animatedSprite.AnimationFinished -= OnAnimationFinished;
+			_isRespawning = false;
+		}
 	}
 
 	private void UpdateAnimations()
 	{
+		if (_isRespawning)
+		{
+			return;
+		}
+
 		if (Health.IsImmortal)
 		{
 			_animatedSprite.Play("damage");

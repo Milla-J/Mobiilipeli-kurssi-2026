@@ -8,6 +8,8 @@ public partial class LevelController : Node2D
 	[Export] private PlayerCharacter _player = null;
 	[Export] private UIHealthBar _healthBar = null;
 
+	private Vector2 _spawnPoint = Vector2.Zero;
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -18,6 +20,11 @@ public partial class LevelController : Node2D
 		{
 			_healthBar.Setup(_player.Health);
 		}
+
+		if (_player != null)
+		{
+			_spawnPoint = _player.GlobalPosition;
+		}
 	}
 
 	public override void _ExitTree()
@@ -26,5 +33,10 @@ public partial class LevelController : Node2D
 		{
 			_healthBar.Dispose(_player.Health);
 		}
+	}
+
+	public void Respawn()
+	{
+		_player.GlobalPosition = _spawnPoint;
 	}
 }
