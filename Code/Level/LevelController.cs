@@ -7,6 +7,7 @@ public partial class LevelController : Node2D
 
 	[Export] private PlayerCharacter _player = null;
 	[Export] private UIHealthBar _healthBar = null;
+	[Export] private MainUi _mainUi = null;
 
 	private Vector2 _spawnPoint = Vector2.Zero;
 
@@ -47,6 +48,11 @@ public partial class LevelController : Node2D
 			if (Input.IsActionJustPressed("SetEN"))
 			{
 				GameManager.Instance.SetLocale("en");
+			}
+
+			if (Input.IsActionJustPressed("Pause") && _mainUi != null)
+			{
+				_mainUi.OpenPause();
 			}
 		}
 	}

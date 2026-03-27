@@ -37,10 +37,11 @@ point_count = 2
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_n5ptj"]
 
-[node name="Level1" type="Node2D" node_paths=PackedStringArray("_player", "_healthBar")]
+[node name="Level1" type="Node2D" node_paths=PackedStringArray("_player", "_healthBar", "_mainUi")]
 script = ExtResource("1_4d3fe")
 _player = NodePath("PlayerCharacter")
 _healthBar = NodePath("MainUI/HealthBar")
+_mainUi = NodePath("MainUI")
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("1_5jgm0")]
 position = Vector2(207, 123)
